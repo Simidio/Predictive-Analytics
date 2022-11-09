@@ -30,7 +30,7 @@ library(zoo)
 library(xts)
 
 # Import CSV
-dati<-read.csv("C:/Users/simone.gabrielli/OneDrive - Accenture/Progetti/Progetti Qlik/MyCFO 3.0/Fonti Dati/TimeSeries-Days.csv",sep = ";", header = TRUE) 
+dati<-read.csv("...",sep = ";", header = TRUE) 
 
 dati  
 
@@ -97,5 +97,5 @@ ts2<-as.xts(forecast)
 ts3 <- c(ts1, ts2)
 ts3
 
-# Export to CSV
-write.zoo(ts3, file="C:/Users/simone.gabrielli/Desktop//Forecast.csv", sep=";")
+# Export to CSV with write.zoo
+write.zoo(ts3, file="...", sep=";")
