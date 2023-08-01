@@ -30,7 +30,7 @@ library(zoo)
 library(xts)
 
 # Import CSV
-dati<-read.csv("...",sep = ";", header = TRUE) 
+dati <- read.csv("C:\\Users\\...\\TimeSeries-Days.csv", sep = ";", header = TRUE) 
 
 dati  
 
@@ -72,6 +72,18 @@ a3
 a <- c(a1, a2, a3)
 BestModel <- which.min(a)
 
+# Create a plot of historical data and the forecast
+if (BestModel == 1) { 
+  forecastSN <- snaive(dati_ts, h = 8)
+  plot(forecastSN, main = "Simple Naive Forecast")
+} else if (BestModel == 2) {
+  forecastETS <- forecast(ets(dati_ts), h = 8)
+  plot(forecastETS, main = "ETS Forecast")
+} else {
+  fittARIMA <- auto.arima(dati_ts, lambda = 0, stepwise = FALSE)
+  forecastARIMA <- forecast(fittARIMA, h = 8) 
+  plot(forecastARIMA, main = "ARIMA Forecast")
+}
 
 
 Fc <- if (BestModel == 1) { 
